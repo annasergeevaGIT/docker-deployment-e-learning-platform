@@ -1,2 +1,16 @@
 
 <h3>Docker Deployment for running all microservices</h3>
+
+Запустите скрипты в следующем порядке:
+
+./start_containers - запустить контейнеры. При первом запуске будет выводится ошибка при попытках удалить еще несуществующие хранилища, игнорируйте. Если у вас вместо docker-compose новый docker compose, поправьте скрипт. После старта дождитесь, когда контейнеры полностью поднимутся. Дольше всего запускается Kafka Connect, дождитесь его, в логах будет запись:
+INFO Kafka Connect started (org.apache.kafka.connect.runtime.Connect)
+Чтобы посмотреть логи, выполните команду: docker logs --follow connect.
+После того, как закончите отслеживать логи, нажмите Ctrl+C.
+
+./register_debezium.sh - отправляет конфигурацию Debezium Postgres Connector в Kafka Connect.
+
+./submit_requests.sh - отправляет запросы в микросервисы.
+
+./read_topics.sh - читает сообщения из топиков Kafka.
+После того, как вы выполните все скрипты, посмотрите логи контейнеров - в них должны быть записи об обработке входящих запросов, а также сообщений из Kafka. Остановите контейнеры командой docker-compose down

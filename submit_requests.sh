@@ -2,11 +2,11 @@
 echo -e "\n*** Submitting requests to Menu Service ***\n"
 
 printf "\n\n"
-curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json' -d '{"name": "One","description": "Nice Item One", "price": 10.10, "category": "drinks", "timeToCook": 1000, "weight": 10.20, "imageUrl": "http://images.com/one.png", "ingredientCollection": {"ingredients": [{"name": "ingredient one", "calories": 10}, {"name": "ingredient two", "calories": 20}]}}'
+curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json' -d '{"name": "One","description": "Nice Item One", "price": 10.10, "category": "engineering", "duration": 1000, "difficulty": "beginner", "imageUrl": "http://images.com/one.png", "moduleCollection": {"modules": [{"name": "module one", "duration": 10}, {"name": "module two", "duration": 20}]}}'
 printf "\n\n"
-curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json' -d '{"name": "Two","description": "Nice Item Two", "price": 10.10, "category": "drinks", "timeToCook": 1000, "weight": 10.20, "imageUrl": "http://images.com/one.png", "ingredientCollection": {"ingredients": [{"name": "ingredient one", "calories": 10}, {"name": "ingredient two", "calories": 20}]}}'
+curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json' -d '{"name": "Two","description": "Nice Item Two", "price": 10.10, "category": "engineering", "duration": 1000, "difficulty": "beginner", "imageUrl": "http://images.com/one.png", "moduleCollection": {"modules": [{"name": "module one", "duration": 10}, {"name": "module two", "duration": 20}]}}'
 printf "\n\n"
-curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json' -d '{"name": "Three","description": "Nice Item Three", "price": 10.10, "category": "drinks", "timeToCook": 1000, "weight": 10.20, "imageUrl": "http://images.com/one.png", "ingredientCollection": {"ingredients": [{"name": "ingredient one", "calories": 10}, {"name": "ingredient two", "calories": 20}]}}'
+curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json' -d '{"name": "Three","description": "Nice Item Three", "price": 10.10, "category": "engineering", "duration": 1000, "difficulty": "beginner", "imageUrl": "http://images.com/one.png", "moduleCollection": {"modules": [{"name": "module one", "duration": 10}, {"name": "module two", "duration": 20}]}}'
 printf "\n\n"
 echo -e "\n*** Submitting requests to Orders Service ***\n"
 printf "\n\n"
