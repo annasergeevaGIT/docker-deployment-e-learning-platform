@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -e "\n*** Submitting requests to Menu Service ***\n"
+echo -e "\n*** Submitting requests to Course Service ***\n"
 
 printf "\n\n"
 curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json' -d '{"name": "One","description": "Nice Item One", "price": 10.10, "category": "engineering", "duration": 1000, "difficulty": "beginner", "imageUrl": "http://images.com/one.png", "moduleCollection": {"modules": [{"name": "module one", "duration": 10}, {"name": "module two", "duration": 20}]}}'
@@ -8,7 +8,7 @@ curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json
 printf "\n\n"
 curl -X POST http://localhost:9091/v1/courses -H 'Content-Type: application/json' -d '{"name": "Three","description": "Nice Item Three", "price": 10.10, "category": "engineering", "duration": 1000, "difficulty": "beginner", "imageUrl": "http://images.com/one.png", "moduleCollection": {"modules": [{"name": "module one", "duration": 10}, {"name": "module two", "duration": 20}]}}'
 printf "\n\n"
-echo -e "\n*** Submitting requests to Orders Service ***\n"
+echo -e "\n*** Submitting requests to Enrollment Service ***\n"
 printf "\n\n"
 curl -X POST http://localhost:9092/v1/course-enrollments -H 'Content-Type: application/json' -H 'X-User-Name: UserName1' -d '{"courseNames": ["One", "Two", "Three"], "address": { "city": "Moscow", "street": "Street", "house": 1, "apartment": 1}}'
 printf "\n\n"
@@ -20,7 +20,7 @@ curl -X POST http://localhost:9092/v1/course-enrollments -H 'Content-Type: appli
 printf "\n\n"
 curl -X POST http://localhost:9092/v1/course-enrollments -H 'Content-Type: application/json' -H 'X-User-Name: UserName5' -d '{"courseNames": ["One", "Two", "Three"], "address": { "city": "Rostov", "street": "Street", "house": 1, "apartment": 1}}'
 printf "\n\n"
-echo -e "\n*** Submitting requests to Review Service ***\n"
+echo -e "\n*** Submitting requests to Feedback Service ***\n"
 printf "\n\n"
 curl -X POST http://localhost:9093/v1/feedbacks -H 'Content-Type: application/json' -H 'X-User-Name: Alex' -d '{"courseId": 1, "comment": "Comment", "rate": 5}'
 printf "\n\n"
