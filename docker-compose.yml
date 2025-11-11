@@ -273,8 +273,8 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:24.0
     container_name: "keycloak"
-    # start keycloak in development mode # with import realm
-    command: start-dev --import-realm
+    # start keycloak in development mode
+    command: start-dev
     volumes:
       - ./keycloak:/opt/keycloak/data/import
     environment:
