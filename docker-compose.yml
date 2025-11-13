@@ -140,9 +140,9 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
       - EUREKA_HOSTNAME=discovery-service
 
-  gateway-service:
-    image: "gateway-service"
-    container_name: "gateway-service"
+  gateway-service-e-learning-platform:
+    image: "gateway-service-e-learning-platform"
+    container_name: "gateway-service-e-learning-platform"
     ports:
       - "9099:9099"
     depends_on:
