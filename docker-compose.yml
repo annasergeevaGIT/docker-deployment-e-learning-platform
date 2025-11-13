@@ -48,6 +48,8 @@ services:
       - DB_URL=${FEEDBACK_DB_URL}
       - DISCOVERY_SERVICE_URL=${DISCOVERY_SERVICE_URL}
       - ZIPKIN_URL=${ZIPKIN_URL}
+      - KEYCLOAK_URL=${KEYCLOAK_URL}
+      - JWK_SET_URL=${JWK_SET_URL}
 
   enrollment-service:
     image: "enrollment-service"
@@ -71,6 +73,8 @@ services:
       - SCHEMA_REGISTRY_URL=${SCHEMA_REGISTRY_URL}
       - DISCOVERY_SERVICE_URL=${DISCOVERY_SERVICE_URL}
       - ZIPKIN_URL=${ZIPKIN_URL}
+      - KEYCLOAK_URL=${KEYCLOAK_URL}
+      - JWK_SET_URL=${JWK_SET_URL}
 
   dispatcher-service:
     image: "dispatcher-service"
@@ -106,6 +110,8 @@ services:
       - DB_URL=${COURSE_DB_URL}
       - DISCOVERY_SERVICE_URL=${DISCOVERY_SERVICE_URL}
       - ZIPKIN_URL=${ZIPKIN_URL}
+      - KEYCLOAK_URL=${KEYCLOAK_URL}
+      - JWK_SET_URL=${JWK_SET_URL}
 
 #  course-service-2:
 #    image: "course-service"
@@ -140,13 +146,15 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
       - EUREKA_HOSTNAME=discovery-service
 
-  gateway-service:
-    image: "gateway-service"
-    container_name: "gateway-service"
+  gateway-service-e-learning-platform:
+    image: "gateway-service-e-learning-platform"
+    container_name: "gateway-service-e-learning-platform"
     ports:
       - "9099:9099"
     depends_on:
       config-server-e-learning-platform:
+        condition: service_healthy
+      keycloak:
         condition: service_healthy
     environment:
       - CONFIGSERVER_IMPORT=configserver:${CONFIG_SERVER_URL}
@@ -155,6 +163,8 @@ services:
       - DISCOVERY_SERVICE_URL=${DISCOVERY_SERVICE_URL}
       - REDIS_HOST=${REDIS_HOST}
       - ZIPKIN_URL=${ZIPKIN_URL}
+      - KEYCLOAK_URL=${KEYCLOAK_URL}
+      - KEYCLOAK_CLIENT_SECRET=${KEYCLOAK_CLIENT_SECRET}
 
   postgres:
     image: "postgres:16.1"
