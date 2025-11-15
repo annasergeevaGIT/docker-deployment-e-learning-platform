@@ -1,0 +1,12 @@
+server:
+  http_listen_port: 3200
+# tempo is on the standard Zipkin port 9411 and endpoint http://localhost:9411/api/v2/spans
+distributor:
+  receivers:
+    zipkin:
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /tmp/tempo/blocks
