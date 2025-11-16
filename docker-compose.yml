@@ -344,6 +344,15 @@ services:
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
       - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
 
+  k6:
+    image: grafana/k6:0.52.0
+    container_name: k6
+    volumes:
+      - ./load-tests:/scripts
+      - ./load-tests/results:/results
+    entrypoint: ["sleep", "infinity"]
+    tty: true
+
 volumes:
   db-data:
     driver: local

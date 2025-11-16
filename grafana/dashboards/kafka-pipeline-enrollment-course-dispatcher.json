@@ -1,0 +1,92 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "title": "Kafka Pipeline (Universal)",
+  "schemaVersion": 38,
+  "panels": [
+
+    {
+      "type": "timeseries",
+      "title": "Producer Throughput (calls/sec)",
+      "datasource": "prometheus",
+      "gridPos": { "h": 6, "w": 24, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(spring_kafka_template_seconds_count[30s])) by (application)",
+          "legendFormat": "{{application}}"
+        }
+      ]
+    },
+
+    {
+      "type": "timeseries",
+      "title": "Consumer Throughput (records/sec)",
+      "datasource": "prometheus",
+      "gridPos": { "h": 6, "w": 24, "x": 0, "y": 6 },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(kafka_consumer_fetch_manager_records_consumed_total[30s])) by (application)",
+          "legendFormat": "{{application}}"
+        }
+      ]
+    },
+
+    {
+      "type": "timeseries",
+      "title": "Listener Execution Time p95",
+      "datasource": "prometheus",
+      "gridPos": { "h": 6, "w": 24, "x": 0, "y": 12 },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "histogram_quantile(0.95, sum(rate(spring_kafka_listener_seconds_bucket[30s])) by (le, application)) * 1000",
+          "legendFormat": "{{application}} p95"
+        }
+      ]
+    },
+
+    {
+      "type": "timeseries",
+      "title": "Consumer Lag Max",
+      "datasource": "prometheus",
+      "gridPos": { "h": 6, "w": 24, "x": 0, "y": 18 },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "max(kafka_consumer_fetch_manager_records_lag_max) by (client_id)",
+          "legendFormat": "{{client_id}}"
+        }
+      ]
+    },
+
+    {
+      "type": "timeseries",
+      "title": "Producer Max Latency (ms)",
+      "datasource": "prometheus",
+      "gridPos": { "h": 6, "w": 24, "x": 0, "y": 24 },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "max(spring_kafka_template_seconds_max * 1000) by (application)",
+          "legendFormat": "{{application}}"
+        }
+      ]
+    },
+
+    {
+      "type": "timeseries",
+      "title": "Listener Failures (events/sec)",
+      "datasource": "prometheus",
+      "gridPos": { "h": 6, "w": 24, "x": 0, "y": 30 },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(spring_kafka_listener_seconds_count{result=\"failure\"}[30s])) by (application)",
+          "legendFormat": "{{application}} failures"
+        }
+      ]
+    }
+  ]
+}
