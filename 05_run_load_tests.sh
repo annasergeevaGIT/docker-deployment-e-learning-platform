@@ -15,20 +15,20 @@ run_test() {
     | tee load-tests/results/${NAME}-${TS}.log
 }
 # via gateway
-#run_test "basic"                "basic-get-courses"
-#run_test "enrollment"           "create-enrollment"
-#run_test "stress"               "high-throughput-stress"
-#run_test "spike"                "spike-test"
-#run_test "soak"                 "soak-test"
-#run_test "mixed"                "mixed-workload"
+run_test "basic"                "basic-get-courses"
+run_test "enrollment"           "create-enrollment"
+run_test "stress"               "high-throughput-stress"
+run_test "spike"                "spike-test"
+run_test "soak"                 "soak-test"
+run_test "mixed"                "mixed-workload"
 
 # only enrollment
-run_test "basic"                "basic-get-courses-noGateway"
-run_test "enrollment"           "create-enrollment-noGateway"
-run_test "stress"               "high-throughput-stress-noGateway"
-run_test "spike"                "spike-test-noGateway"
-run_test "soak"                 "soak-test-noGateway"
-run_test "mixed"                "mixed-workload-noGateway"
+#run_test "basic"                "basic-get-courses-noGateway"
+#run_test "enrollment"           "create-enrollment-noGateway"
+#run_test "stress"               "high-throughput-stress-noGateway"
+#run_test "spike"                "spike-test-noGateway"
+#run_test "soak"                 "soak-test-noGateway"
+#run_test "mixed"                "mixed-workload-noGateway"
 
 #docker exec -it k6 k6 run /scripts/basic-get-courses.js
 #docker exec -it k6 k6 run /scripts/create-enrollment.js
