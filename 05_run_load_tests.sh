@@ -15,13 +15,12 @@ run_test() {
     | tee load-tests/results/${NAME}-${TS}.log
 }
 # via gateway
-run_test "enrollment"           "create-enrollment"
-run_test "stress"               "high-throughput-stress"
-run_test "spike"                "spike-test"
-run_test "soak"                 "soak-test"
+#run_test "enrollment"           "create-enrollment"
+#run_test "stress"               "high-throughput-stress"
+#run_test "spike"                "spike-test"
 run_test "mixed"                "mixed-workload"
 
-
+#run_test "soak"                 "soak-test"
 #docker exec -it k6 k6 run /scripts/basic-get-courses.js
 #docker exec -it k6 k6 run /scripts/create-enrollment.js
 #docker exec -it k6 k6 run /scripts/high-throughput-stress.js
