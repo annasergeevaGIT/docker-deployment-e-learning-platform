@@ -16,9 +16,9 @@ run_test() {
 }
 # via gateway
 #run_test "enrollment"           "create-enrollment"
-#run_test "stress"               "high-throughput-stress"
+run_test "stress"               "high-throughput-stress"
 #run_test "spike"                "spike-test"
-run_test "mixed"                "mixed-workload"
+#run_test "mixed"                "mixed-workload"
 
 #run_test "soak"                 "soak-test"
 #docker exec -it k6 k6 run /scripts/basic-get-courses.js
