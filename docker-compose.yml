@@ -261,14 +261,15 @@ services:
       CONNECT_PLUGIN_PATH: '/usr/share/java,/usr/share/confluent-hub-components/,/connectors/'
     volumes:
       - connect-data:/opt/docker/db/data
-    command:
-      - bash
-      - -c
-      - |
-        echo "Installing connector plugins"
-        confluent-hub install --no-prompt debezium/debezium-connector-postgresql:2.5.3
-        echo "Launching Kafka Connect worker"
-        /etc/confluent/docker/run
+      - ./plugins:/connectors
+#    command:
+#      - bash
+#      - -c
+#      - |
+#        echo "Installing connector plugins"
+#        confluent-hub install --no-prompt debezium/debezium-connector-postgresql:2.5.3
+#        echo "Launching Kafka Connect worker"
+#        /etc/confluent/docker/run
 
   redis:
     image: "redis:7.2.4"
@@ -343,6 +344,7 @@ services:
       #      - GF_AUTH_DISABLE_LOGIN_FORM=true
       - GF_SECURITY_ADMIN_USER=a
       - GF_SECURITY_ADMIN_PASSWORD=a
+      - GF_USERS_DEFAULT_THEME=light
       - GF_AUTH_ANONYMOUS_ENABLED=false
       - GF_AUTH_DISABLE_LOGIN_FORM=false
       - GF_RENDERING_SERVER_URL=http://grafana-renderer:8081/render
