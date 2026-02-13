@@ -9,20 +9,17 @@ run_test() {
 
   echo "Running $NAME..."
 
-  docker exec k6 k6 run \
-    --out json=/results/${NAME}-${TS}.json \
-    /scripts/${FILE}.js \
-    | tee load-tests/results/${NAME}-${TS}.log
+docker exec k6 k6 run \
+  -e BASE_URL=http://gateway-service:9099 \
+  -e TOKEN_URL=http://keycloak:8080/realms/cloud-java/protocol/openid-connect/token \
+  --out json=/results/${NAME}-${TS}.json \
+  /scripts/${FILE}.js
 }
 # via gateway
-#run_test "enrollment"           "create-enrollment"
-run_test "stress"               "high-throughput-stress"
-#run_test "spike"                "spike-test"
-#run_test "mixed"                "mixed-workload"
+run_test "baseline"            "baseline-test"
+#run_test "stress"               "stress-test"
+#run_test "spike"               "spike-test"
 
-#run_test "soak"                 "soak-test"
-#docker exec -it k6 k6 run /scripts/create-enrollment.js
-#docker exec -it k6 k6 run /scripts/high-throughput-stress.js
+#docker exec -it k6 k6 run /scripts/baseline-test.js
+#docker exec -it k6 k6 run /scripts/stress-test.js
 #docker exec -it k6 k6 run /scripts/spike-test.js
-#docker exec -it k6 k6 run /scripts/mixed-workload.js
-#docker exec -it k6 k6 run /scripts/soak-test.js
