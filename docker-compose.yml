@@ -74,7 +74,7 @@ services:
       - DISCOVERY_SERVICE_URL=${DISCOVERY_SERVICE_URL}
       - ZIPKIN_URL=${ZIPKIN_URL}
       - LOKI_URL=${LOKI_URL}
-      #- APP_KAFKA_ENABLED=false # Kafka disabled !!! Isolated test
+#      - APP_KAFKA_ENABLED=false # Kafka disabled !!! Isolated test
 
   dispatcher-service:
     image: "dispatcher-service"
@@ -91,7 +91,7 @@ services:
       - KAFKA_BOOTSTRAP_SERVERS=${KAFKA_BOOTSTRAP_SERVERS}
       - SCHEMA_REGISTRY_URL=${SCHEMA_REGISTRY_URL}
       - LOKI_URL=${LOKI_URL}
-      #- APP_KAFKA_ENABLED=false # Kafka disabled !!! Isolated test
+#      - APP_KAFKA_ENABLED=false # Kafka disabled !!! Isolated test
 
   course-service:
     image: "course-service"
