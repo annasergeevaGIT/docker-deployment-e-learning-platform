@@ -32,3 +32,4 @@ out/
 
 # Load tests output
 load-tests/results/
+uml/

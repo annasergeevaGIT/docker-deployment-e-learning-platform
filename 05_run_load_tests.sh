@@ -9,16 +9,28 @@ run_test() {
 
   echo "Running $NAME..."
 
-docker exec k6 k6 run \
-  -e BASE_URL=http://gateway-service:9099 \
-  -e TOKEN_URL=http://keycloak:8080/realms/cloud-java/protocol/openid-connect/token \
-  --out json=/results/${NAME}-${TS}.json \
-  /scripts/${FILE}.js
-}
+#END_TO_END TEST
+#docker exec k6 k6 run \
+#  -e BASE_URL=http://gateway-service:9099 \
+#  -e TOKEN_URL=http://keycloak:8080/realms/cloud-java/protocol/openid-connect/token \
+#  --out json=/results/${NAME}-${TS}.json \
+#  /scripts/${FILE}.js
+#}
 # via gateway
-run_test "baseline"            "baseline-test"
+#run_test "baseline"            "baseline-test"
 #run_test "stress"               "stress-test"
 #run_test "spike"               "spike-test"
+
+
+#ISOLATED TEST
+  docker exec k6 k6 run \
+    -e BASE_URL=http://enrollment-service:9092 \
+    --out json=/results/${NAME}-${TS}.json \
+    /scripts/${FILE}.js
+}
+#run_test "baseline"            "baseline-test-isolated"
+#run_test "stress"               "stress-test-isolated"
+run_test "spike"               "spike-test-isolated"
 
 #docker exec -it k6 k6 run /scripts/baseline-test.js
 #docker exec -it k6 k6 run /scripts/stress-test.js

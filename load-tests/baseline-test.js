@@ -1,7 +1,7 @@
 import http from 'k6/http';
 import { check } from 'k6';
 
-const BASE = __ENV.BASE_URL || 'http://localhost:9099';
+const BASE = __ENV.BASE_URL || 'http://localhost:9092'; //9099
 const TOKEN_URL =
     __ENV.TOKEN_URL ||
     'http://localhost:8080/realms/cloud-java/protocol/openid-connect/token';
